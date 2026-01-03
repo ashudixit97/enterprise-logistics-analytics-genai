@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_delivery_daily
+    description: "Daily delivery KPIs by state."
+    columns:
+      - name: delivery_date
+        tests:
+          - not_null
+      - name: location_state
+        tests:
+          - not_null
+      - name: deliveries
+        tests:
+          - not_null
+      - name: on_time_rate
+        tests:
+          - not_null
