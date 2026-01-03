@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_delivery_events
+    description: "Staging model for delivery events."
+    columns:
+      - name: _LOADED_AT
+        tests:
+          - not_null

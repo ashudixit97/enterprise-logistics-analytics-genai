@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: LOGISTICS_DB
+    schema: RAW
+    tables:
+      - name: DELIVERY_EVENTS_RAW
+      - name: MAINTENANCE_RECORDS_RAW
+      - name: TRAILERS_RAW
