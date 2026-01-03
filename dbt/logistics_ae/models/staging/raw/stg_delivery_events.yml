@@ -2,8 +2,43 @@ version: 2
 
 models:
   - name: stg_delivery_events
-    description: "Staging model for delivery events."
+    description: "Cleaned staging layer for delivery events with standardized names and types."
     columns:
-      - name: _LOADED_AT
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+
+      - name: load_id
+        tests:
+          - not_null
+
+      - name: trip_id
+        tests:
+          - not_null
+
+      - name: event_type
+        tests:
+          - not_null
+
+      - name: scheduled_ts
+        tests:
+          - not_null
+
+      - name: actual_ts
+        tests:
+          - not_null
+
+      - name: on_time_flag
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Y', 'N', '1', '0', 'TRUE', 'FALSE']
+
+      - name: detention_minutes
+        tests:
+          - not_null
+
+      - name: location_state
         tests:
           - not_null
