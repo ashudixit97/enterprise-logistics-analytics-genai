@@ -2,7 +2,10 @@ version: 2
 
 models:
   - name: stg_delivery_events
-    description: "Cleaned staging layer for delivery events with standardized names and types."
+    description: "Cleaned staging layer for delivery events with standardized names and types.
+                  Note: ~5.5% of delivery records have actual timestamps earlier than scheduled
+  		  timestamps by >2 hours, likely due to upstream scheduling or timezone issues.
+  		  A 7% tolerance threshold is enforced via dbt tests to catch regressions."
     columns:
       - name: event_id
         tests:
@@ -33,7 +36,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['Y', 'N', '1', '0', 'TRUE', 'FALSE']
+              values: ['Y', 'N']
 
       - name: detention_minutes
         tests:

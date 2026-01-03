@@ -14,7 +14,11 @@ typed as (
         try_to_timestamp_ntz(ACTUAL_DATETIME)    as actual_ts,
 
         DETENTION_MINUTES::number           as detention_minutes,
-        ON_TIME_FLAG::string                as on_time_flag,
+        case
+  	when upper(trim(ON_TIME_FLAG::string)) in ('Y','YES','TRUE','1','T') then 'Y'
+  	when upper(trim(ON_TIME_FLAG::string)) in ('N','NO','FALSE','0','F') then 'N'
+  	else 'UNKNOWN'
+	end as on_time_flag,
 
         LOCATION_CITY::string               as location_city,
         LOCATION_STATE::string              as location_state,
