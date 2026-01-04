@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fct_route_profitability_daily
+    description: "Daily profitability by route using revenue from loads and fuel spend allocated via trip_id."
+    columns:
+      - name: activity_date
+        tests: [not_null]
+      - name: route_id
+        tests: [not_null]
+      - name: revenue
+        tests: [not_null]
+      - name: miles
+        tests: [not_null]
+      - name: fuel_cost
+        tests: [not_null]

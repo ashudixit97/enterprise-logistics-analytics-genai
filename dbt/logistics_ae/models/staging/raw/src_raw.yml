@@ -8,3 +8,8 @@ sources:
       - name: DELIVERY_EVENTS_RAW
       - name: MAINTENANCE_RECORDS_RAW
       - name: TRAILERS_RAW
+      - name: LOADS_RAW
+      - name: ROUTES_RAW
+      - name: FUEL_PURCHASES_RAW
+      - name: TRIPS_RAW
+ 
