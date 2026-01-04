@@ -57,6 +57,35 @@ final as (
         sum(fuel_cost) / nullif(sum(miles), 0) as fuel_cost_per_mile
     from joined
     group by 1, 2
+),
+
+routes as (
+    select
+        route_id,
+        origin_city,
+        origin_state,
+        destination_city,
+        destination_state,
+        typical_distance_miles
+    from {{ ref('dim_routes') }}
 )
 
-select * from final
+select
+    f.activity_date,
+    f.route_id,
+
+    r.origin_city,
+    r.origin_state,
+    r.destination_city,
+    r.destination_state,
+    r.typical_distance_miles,
+
+    f.revenue,
+    f.miles,
+    f.fuel_cost,
+    f.profit,
+    f.profit_per_mile,
+    f.fuel_cost_per_mile
+from final f
+left join routes r
+  on f.route_id = r.route_id

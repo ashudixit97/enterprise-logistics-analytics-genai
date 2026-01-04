@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_routes
+    description: "Route dimension: origin/destination and typical distance."
+    columns:
+      - name: route_id
+        tests:
+          - not_null
+          - unique
+      - name: origin_state
+        tests: [not_null]
+      - name: destination_state
+        tests: [not_null]
+      - name: typical_distance_miles
+        tests: [not_null]
